@@ -63,7 +63,7 @@ wget -O plugin.json https://raw.githubusercontent.com/jellyfina/onekey/main/baot
 mv plugin.json /www/server/panel/data/plugin.json
 
 
-wget -O plugin.json https://raw.githubusercontent.com/jellyfina/onekey/main/baota/repair.json -T 10
+wget -O repair.json https://raw.githubusercontent.com/jellyfina/onekey/main/baota/repair.json -T 10
 mv repair.json /www/server/panel/data/repair.json
 echo -e "\033[33m已启用企业版\033[0m"
 
