@@ -1,7 +1,7 @@
 #!/bin/bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
-
+chattr -i /www/server/panel/data/plugin.json
 Remove_Bt(){
 	if [ ! -f "/etc/init.d/bt" ] || [ ! -d "/www/server/panel" ]; then
 		echo -e "此服务器没有安装宝塔！"
