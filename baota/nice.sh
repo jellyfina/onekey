@@ -16,7 +16,7 @@ fi
 
 wget -O nice.tar.gz https://raw.githubusercontent.com/jellyfina/onekey/main/baota/nice.tar.gz -T 10
 
-tar zxvf nice.tar.gz
+tar -zxvf nice.tar.gz
 
 mv login.css /www/server/panel/BTPanel/static/css/login.css
 mv login.html /www/server/panel/BTPanel/templates/default/index.html
