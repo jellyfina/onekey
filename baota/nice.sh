@@ -19,9 +19,9 @@ wget -O nice.tar.gz https://raw.githubusercontent.com/jellyfina/onekey/main/baot
 tar -zxvf nice.tar.gz
 
 mv login.css /www/server/panel/BTPanel/static/css/login.css
-mv login.html /www/server/panel/BTPanel/templates/default/index.html
+mv login.html /www/server/panel/BTPanel/templates/default/login.html
 mv bg.jpg /www/server/panel/BTPanel/static/img/bg.jpg
-mv phonebg.jpg /www/server/panel/BTPanel/static/img/bg.jpg
+mv phonebg.jpg /www/server/panel/BTPanel/static/img/phonebg.jpg
 echo -e "\033[33m已完成登录界面美化\033[0m"
 
 rm -rf nice.tar.gz
