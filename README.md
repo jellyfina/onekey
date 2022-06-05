@@ -14,6 +14,10 @@ sh -c "$(curl -kfsSl https://raw.githubusercontent.com/jellyfina/onekey/main/bao
 ```sh
 sh -c "$(curl -kfsSl https://raw.githubusercontent.com/jellyfina/onekey/main/baota/optimize.sh)"
 ```
+#### 🚩 一键卸载宝塔
+```sh
+sh -c "$(curl -kfsSl https://raw.githubusercontent.com/jellyfina/onekey/main/baota/bt-uninstall.sh)"
+```
 #### 🚩 一键安装docker(支持centos/ubuntu/debian)
 ```sh
 sh -c "$(curl -kfsSl https://raw.githubusercontent.com/jellyfina/onekey/main/baota/optimize.sh)"
