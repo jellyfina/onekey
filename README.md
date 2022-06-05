@@ -10,7 +10,7 @@ sh -c "$(curl -kfsSl https://raw.githubusercontent.com/jellyfina/onekey/main/bao
 ```sh
 sh -c "$(curl -kfsSl https://raw.githubusercontent.com/jellyfina/onekey/main/baota/install_6.0.sh)"
 ```
-#### 🚩 优化宝塔7.7.0
+#### 🚩 优化宝塔7.7.0(开启企业版/去强制绑定账号/去新建网站时产生垃圾文件等等)
 ```sh
 sh -c "$(curl -kfsSl https://raw.githubusercontent.com/jellyfina/onekey/main/baota/optimize.sh)"
 ```
