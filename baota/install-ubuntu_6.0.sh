@@ -829,6 +829,7 @@ echo -e "\033[33mIf you cannot access the panel,\033[0m"
 echo -e "\033[33mrelease the following panel port [${panelPort}] in the security group\033[0m"
 echo -e "\033[33m若无法访问面板，请检查防火墙/安全组是否有放行面板[${panelPort}]端口\033[0m"
 echo -e "=================================================================="
+chattr +i /www/server/panel/data/plugin.json
 rm -f /www/server/panel/data/bind.pl
 endTime=`date +%s`
 ((outTime=($endTime-$startTime)/60))
