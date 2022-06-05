@@ -56,20 +56,17 @@ fi
 echo -e "\033[33m已关闭活动推荐与在线客服\033[0m"
 
 wget -O panelplugin.py https://raw.githubusercontent.com/jellyfina/onekey/main/baota/panelPlugin.py -T 10
-cp panelplugin.py /www/server/panel/class/panelplugin.py 
+mv panelplugin.py /www/server/panel/class/panelplugin.py 
 
 
 wget -O plugin.json https://raw.githubusercontent.com/jellyfina/onekey/main/baota/plugin.json -T 10
-cp plugin.json /www/server/panel/data/plugin.json
+mv plugin.json /www/server/panel/data/plugin.json
 
 
 wget -O plugin.json https://raw.githubusercontent.com/jellyfina/onekey/main/baota/repair.json -T 10
-cp repair.json /www/server/panel/data/repair.json
+mv repair.json /www/server/panel/data/repair.json
 echo -e "\033[33m已启用企业版\033[0m"
 
-rm -rf repair.json
-rm -rf plugin.json
-rm -rf panelplugin.py
 rm -rf bt.js
 
 /etc/init.d/bt restart
