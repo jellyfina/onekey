@@ -24,5 +24,9 @@ sh -c "$(curl -kfsSl https://raw.githubusercontent.com/jellyfina/onekey/main/bao
 ```
 #### 🚩 一键安装docker(支持centos/ubuntu/debian)
 ```sh
-sh -c "$(curl -kfsSl https://raw.githubusercontent.com/jellyfina/onekey/main/baota/optimize.sh)"
+sh -c "$(curl -kfsSl https://raw.githubusercontent.com/jellyfina/onekey/main/docker.sh)"
+```
+#### 🚩 一键搭建简易网盘
+```sh
+bash <(curl -Lsk https://github.com/jellyfina/onekey/blob/main/cloud-install.sh)"
 ```
