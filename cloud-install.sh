@@ -107,16 +107,11 @@ function zdir_run(){
 
 	#内网ip地址获取
 ip=$(ip addr | grep -E -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -E -v "^127\.|^255\.|^0\." | head -n 1)
-if [[ ! -n "$ip" ]]; then
-    ip="你的内网IP"
-fi
-#外网IP地址获取
-if [ "$address" = "" ];then
+        #外网IP地址获取
 address=$(curl ipip.ooo)
-fi
     echo '-------------------------------------------'
-    echo '外网请访问http://${address}:1080
-	echo '内网请访问http://${ip}:1080
+    echo '外网请访问 http://${address}:1080
+    echo '内网请访问 http://${ip}:1080
     echo '安装路径为:'${zdir_path}
     echo '用户名为:admin,密码为:'${zdir_pass}
     echo '-------------------------------------------'
