@@ -4,6 +4,30 @@
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:/sbin
 export PATH
 
+#检查并安装Docker
+function check_docker(){
+	echo '-------------------------------------------'
+	docker_path=$(which docker)
+	if [ -e "${docker_path}" ]
+	then
+		echo 'Docker已安装，继续执行'
+	else
+		read -p "Docker未安装，是否安装Docker?(y/n):" is_docker
+		if [ $is_docker == 'y' ]
+			then
+				curl -fsSL https://get.docker.com -o get-docker.sh
+				sh get-docker.sh
+			else
+				echo '放弃安装！'
+				echo '-------------------------------------------'
+				exit
+		fi
+	fi
+	#启动docker
+	systemctl start docker
+	echo '-------------------------------------------'
+}
+
 #安装前的准备
 function ready(){
 	#创建用户和用户组
