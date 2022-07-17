@@ -28,5 +28,5 @@ sh -c "$(curl -kfsSl https://raw.githubusercontent.com/jellyfina/onekey/main/doc
 ```
 #### 🚩 一键搭建简易网盘
 ```sh
-bash <(curl -Lsk https://github.com/jellyfina/onekey/blob/main/cloud-install.sh)"
+bash <(curl -Lsk https://github.com/jellyfina/onekey/blob/main/cloud-install.sh)
 ```
