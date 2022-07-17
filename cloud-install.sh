@@ -44,16 +44,22 @@ function ready(){
 		apt-get install -y unzip wget
 	fi
 }
-
+#默认安装端口
+nport=1080
 #安装Zdir
 function install_zdir(){
 	echo '-------------------------------------------'
-	read -p "请输入Zdir安装目录（如果留空，则默认为/data/wwwroot/default）:" zdir_path
+	read -p "请输入网盘安装目录（如果留空，则默认为/data/wwwroot/default）:" zdir_path
 	#如果路径为空
 	if [ -z "${zdir_path}" ]
 	then
 		zdir_path='/data/wwwroot/default'
 	fi
+	echo '-------------------------------------------'
+	read -p "请输入网盘服务端口（如果留空，则默认端口为$nport）:" port
+	    if [[ ! -n "$port" ]]; then
+        port=$nport
+    fi
 	#创建目录
 	mkdir -p $zdir_path
 	#下载源码
@@ -63,6 +69,7 @@ function install_zdir(){
 	unzip -o cloud.zip
 	mv zdir-master zdir
 	rm -rf zdir-master
+	rm -rf cloud.zip
 	#重命名配置文件
 	cp ${zdir_path}/zdir/config.simple.php ${zdir_path}/zdir/config.php
 	#设置读取的路径
@@ -84,34 +91,36 @@ function install_zdir(){
 function chk_firewall(){
 	if [ -e "/etc/sysconfig/iptables" ]
 	then
-		iptables -I INPUT -p tcp --dport 1080 -j ACCEPT
+		iptables -I INPUT -p tcp --dport $port -j ACCEPT
 		service iptables save
 		service iptables restart
 	elif [ -e "/etc/firewalld/zones/public.xml" ]
 	then
-		firewall-cmd --zone=public --add-port=1080/tcp --permanent
+		firewall-cmd --zone=public --add-port=$port/tcp --permanent
 		firewall-cmd --reload
 	elif [ -e "/etc/ufw/before.rules" ]
 	then
-		sudo ufw allow 1080/tcp
+		sudo ufw allow $port/tcp
 	fi
 }
 
 #运行容器
 function zdir_run(){
 	docker run --name="zdir"  \
-    -d -p 1080:80 --restart=always \
+    -d -p $port:80 --restart=always \
     -v ${zdir_path}:/data/wwwroot/default \
-    helloz/zdir:v1.0 \
+    jellyfina/zdir \
     /usr/sbin/run.sh
 
 	#内网ip地址获取
 ip=$(ip addr | grep -E -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -E -v "^127\.|^255\.|^0\." | head -n 1)
-        #外网IP地址获取
-address=$(curl ipip.ooo)
+
+#外网IP地址获取
+address=$(curl https://ipip.ooo)
+
     echo '-------------------------------------------'
-    echo '外网请访问 http://${address}:1080
-    echo '内网请访问 http://${ip}:1080
+    echo '外网请访问 http://'${address}:$port
+    echo '内网请访问 http://'${ip}:$port
     echo '安装路径为:'${zdir_path}
     echo '用户名为:admin,密码为:'${zdir_pass}
     echo '-------------------------------------------'
