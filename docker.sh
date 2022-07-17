@@ -1,4 +1,4 @@
-#!/usr/bin/bash env
+#!/bin/bash
 
 # 字体颜色配置
 Green="\033[32;1m"
