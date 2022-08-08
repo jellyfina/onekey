@@ -1,5 +1,8 @@
 #!/bin/bash
-
+declare flag=0
+clear
+while [ "$flag" -eq 0 ]
+do
 # 青龙变量
 QL_DOCKER_IMG_NAME="whyour/qinglong"
 TAG="latest"
@@ -9,7 +12,42 @@ N1_QL_FOLDER=/mnt/mmcblk2p4/ql
 QL_CONTAINER_NAME=""
 NETWORK="bridge"
 QL_PORT="5700"
+log() {
+    echo -e "\n$1"
+}
+inp() {
+    echo -e "\n$1"
+}
 
+opt() {
+    echo -n -e "输入您的选择->"
+}
+cancelrun() {
+    if [ $# -gt 0 ]; then
+        echo -e " $1 "
+    fi
+    exit 1
+}
+
+
+TIME() {
+[[ -z "$1" ]] && {
+	echo -ne " "
+} || {
+     case $1 in
+	r) export Color="\e[31;1m";;
+	g) export Color="\e[32;1m";;
+	b) export Color="\e[34;1m";;
+	y) export Color="\e[33;1m";;
+	z) export Color="\e[35;1m";;
+	l) export Color="\e[36;1m";;
+	w) export Color="\e[29;1m";;
+      esac
+	[[ $# -lt 2 ]] && echo -e "\e[36m\e[0m ${1}" || {
+		echo -e "\e[36m\e[0m ${Color}${2}\e[0m"
+	 }
+      }
+}
 #cat << EOF
 TIME w "----------------------------------------"
 TIME w "|****Please Enter Your Choice:[0-2]****|"
