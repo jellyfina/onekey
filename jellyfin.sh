@@ -1,5 +1,8 @@
 #!/bin/bash
-
+declare flag=0
+clear
+while [ "$flag" -eq 0 ]
+do
 # emby变量
 EMBY_DOCKER_IMG_NAME="xinjiawei1/emby_unlockd"
 EMBY_TAG="latest"
