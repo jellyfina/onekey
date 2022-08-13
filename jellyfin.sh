@@ -191,35 +191,35 @@ TIME r "<注>请使用root账户部署容器"
   log "2.开始创建容器并执行"
       if [ -d "/dev/dri" ]; then
           docker run -dit \
-              --name $EMBY_CONTAINER_NAME \
-              --hostname $EMBY_CONTAINER_NAME \
+              --name $JELLYFIN_CONTAINER_NAME \
+              --hostname $JELLYFIN_CONTAINER_NAME \
               --restart always \
               -v $CONFIG_PATH:/config \
               -v $MOVIES_PATH:/mnt/movies \
               -v $TVSHOWS_PATH:/mnt/tvshows \
-              -p $EMBY_PORT:8096 -p $EMBY_PORT1:8920 \
+              -p $JELLYFIN_PORT:8096 -p $JELLYFIN_PORT1:8920 \
               -e TZ=Asia/Shanghai \
               --device /dev/dri:/dev/dri \
               -e UMASK_SET=022 \
               -e UID=0 \
               -e GID=0 \
               -e GIDLIST=0 \
-              $EMBY_DOCKER_IMG_NAME:$EMBY_TAG
+              $JELLYFIN_DOCKER_IMG_NAME:$TAG
       else
           docker run -dit \
-              --name $EMBY_CONTAINER_NAME \
-              --hostname $EMBY_CONTAINER_NAME \
+              --name $JELLYFIN_CONTAINER_NAME \
+              --hostname $JELLYFIN_CONTAINER_NAME \
               --restart always \
               -v $CONFIG_PATH:/config \
               -v $MOVIES_PATH:/mnt/movies \
               -v $TVSHOWS_PATH:/mnt/tvshows \
-              -p $EMBY_PORT:8096 -p $EMBY_PORT1:8920 \
+              -p $JELLYFIN_PORT:8096 -p $JELLYFIN_PORT1:8920 \
               -e TZ=Asia/Shanghai \
               -e UMASK_SET=022 \
               -e UID=0 \
               -e GID=0 \
               -e GIDLIST=0 \
-              $EMBY_DOCKER_IMG_NAME:$EMBY_TAG
+              $JELLYFIN_DOCKER_IMG_NAME:$TAG
       fi
       if [ $? -ne 0 ] ; then
           cancelrun "** 错误：容器创建失败，请翻译以上英文报错，Google/百度尝试解决问题！"
@@ -389,7 +389,7 @@ TIME r "<注>请使用root账户部署容器"
       log "列出所有宿主机上的容器"
       docker ps -a
     TIME g "-----------------------------------------------------------------"
-    TIME g "              emby启动需要一点点时间，请耐心等待！             "
+    TIME g "              jellyfin启动需要一点点时间，请耐心等待！             "
     sleep 10
     TIME g "                    安装完成，自动退出脚本                     "
     TIME g "         emby默认端口为8096，如有修改请访问修改的端口          "
