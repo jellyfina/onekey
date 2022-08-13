@@ -401,3 +401,17 @@ TIME r "<注>请使用root账户部署容器"
  clear 
  exit
  ;;
+ *) TIME r "----------------------------------"
+    TIME r "|          Warning!!!            |"
+    TIME r "|       请输入正确的选项!        |"
+    TIME r "----------------------------------"
+ for i in $(seq -w 1 -1 1)
+   do
+     #TIME r "\b\b$i";
+     sleep 1;
+   done
+ clear
+ ;;
+ esac
+ done
+;;
