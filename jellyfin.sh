@@ -1,8 +1,4 @@
 #!/bin/bash
-declare flag=0
-clear
-while [ "$flag" -eq 0 ]
-do
 # emby变量
 EMBY_DOCKER_IMG_NAME="xinjiawei1/emby_unlockd"
 EMBY_TAG="latest"
@@ -65,6 +61,9 @@ TIME() {
 	 }
       }
 }
+clear
+while [ "$flag" -eq 0 ]
+do
 #cat << EOF
 TIME w "----------------------------------------"
 TIME w "|****Please Enter Your Choice:[0-2]****|"
@@ -72,7 +71,7 @@ TIME w "|*********** EMBY & JELLYFIN **********|"
 TIME w "----------------------------------------"
 TIME w "(1) 安装emby (开心版暂无arm64)"
 TIME w "(2) 安装jellyfin"
-TIME b "(0) 返回上级菜单"
+TIME b "(0) 退出"
 #EOF
 TIME r "<注>请使用root账户部署容器"
  read -p "Please enter your Choice[0-2]: " input5
