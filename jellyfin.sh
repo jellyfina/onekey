@@ -413,5 +413,5 @@ TIME r "<注>请使用root账户部署容器"
  clear
  ;;
  esac
- done
+ exit
 ;;
