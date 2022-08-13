@@ -55,7 +55,7 @@ TIME w "|**************** 青龙 ****************|"
 TIME w "----------------------------------------"
 TIME w "(1) linxu系统、X86的openwrt、群辉等请选择 1"
 TIME w "(2) N1的EMMC上运行的openwrt请选择 2"
-TIME b "(0) 返回上级菜单"
+TIME b "(0) 退出"
 #EOF
 TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按回车！"
  read -p "Please enter your choice[0-3]: " input2
@@ -523,7 +523,7 @@ TIME r "<注>选择1或2后，如果不明白如何选择或输入，请狂按�
   ;;
  0) 
  clear 
- break
+ exit
  ;;
  *) TIME r "----------------------------------"
     TIME r "|          Warning!!!            |"
