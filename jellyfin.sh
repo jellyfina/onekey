@@ -21,13 +21,10 @@ JELLYFIN_PORT="8096"
 JELLYFIN_PORT1="8920"
 #内网ip地址获取
 ip=$(ip addr | grep -E -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -E -v "^127\.|^255\.|^0\." | head -n 1)
-if [[ ! -n "$ip" ]]; then
-    ip="你的内网IP"
-fi
+
 #外网IP地址获取
-if [ "$address" = "" ];then
 address=$(curl ipip.ooo)
-fi
+
 
 log() {
     echo -e "\n$1"
@@ -72,7 +69,7 @@ TIME w "|*********** EMBY & JELLYFIN **********|"
 TIME w "----------------------------------------"
 TIME w "(1) 安装emby (开心版暂无arm64)"
 TIME w "(2) 安装jellyfin"
-TIME b "(0) 退出"
+TIME b "(0) 返回上级菜单"
 #EOF
 TIME r "<注>请使用root账户部署容器"
  read -p "Please enter your Choice[0-2]: " input5
@@ -191,35 +188,35 @@ TIME r "<注>请使用root账户部署容器"
   log "2.开始创建容器并执行"
       if [ -d "/dev/dri" ]; then
           docker run -dit \
-              --name $JELLYFIN_CONTAINER_NAME \
-              --hostname $JELLYFIN_CONTAINER_NAME \
+              --name $EMBY_CONTAINER_NAME \
+              --hostname $EMBY_CONTAINER_NAME \
               --restart always \
               -v $CONFIG_PATH:/config \
               -v $MOVIES_PATH:/mnt/movies \
               -v $TVSHOWS_PATH:/mnt/tvshows \
-              -p $JELLYFIN_PORT:8096 -p $JELLYFIN_PORT1:8920 \
+              -p $EMBY_PORT:8096 -p $EMBY_PORT1:8920 \
               -e TZ=Asia/Shanghai \
               --device /dev/dri:/dev/dri \
               -e UMASK_SET=022 \
               -e UID=0 \
               -e GID=0 \
               -e GIDLIST=0 \
-              $JELLYFIN_DOCKER_IMG_NAME:$TAG
+              $EMBY_DOCKER_IMG_NAME:$EMBY_TAG
       else
           docker run -dit \
-              --name $JELLYFIN_CONTAINER_NAME \
-              --hostname $JELLYFIN_CONTAINER_NAME \
+              --name $EMBY_CONTAINER_NAME \
+              --hostname $EMBY_CONTAINER_NAME \
               --restart always \
               -v $CONFIG_PATH:/config \
               -v $MOVIES_PATH:/mnt/movies \
               -v $TVSHOWS_PATH:/mnt/tvshows \
-              -p $JELLYFIN_PORT:8096 -p $JELLYFIN_PORT1:8920 \
+              -p $EMBY_PORT:8096 -p $EMBY_PORT1:8920 \
               -e TZ=Asia/Shanghai \
               -e UMASK_SET=022 \
               -e UID=0 \
               -e GID=0 \
               -e GIDLIST=0 \
-              $JELLYFIN_DOCKER_IMG_NAME:$TAG
+              $EMBY_DOCKER_IMG_NAME:$EMBY_TAG
       fi
       if [ $? -ne 0 ] ; then
           cancelrun "** 错误：容器创建失败，请翻译以上英文报错，Google/百度尝试解决问题！"
@@ -231,8 +228,9 @@ TIME r "<注>请使用root账户部署容器"
     TIME g "|              emby启动需要一点点时间，请耐心等待！             |"
     sleep 10
     TIME g "|                    安装完成，自动退出脚本                     |"
-    TIME g "|         emby默认端口为8096，如有修改请访问修改的端口        |"
+    TIME g "|         emby默认端口为8096，如有修改请访问修改的端口          |"
     TIME g "|         访问方式为宿主机ip:端口(例192.168.2.1:8096)           |"
+    TIME g "|         访问http://$ip:8096            |"
     TIME g "|   openwrt需要先执行命令 chmod 777 /dev/dri/* 才能读取到显卡   |"
     TIME g "-----------------------------------------------------------------"
   exit 0
@@ -399,7 +397,7 @@ TIME r "<注>请使用root账户部署容器"
   ;;
  0) 
  clear 
- exit
+ break
  ;;
  *) TIME r "----------------------------------"
     TIME r "|          Warning!!!            |"
@@ -413,5 +411,5 @@ TIME r "<注>请使用root账户部署容器"
  clear
  ;;
  esac
- exit
+ done
 ;;
