@@ -397,7 +397,7 @@ TIME r "<注>请使用root账户部署容器"
   ;;
  0) 
  clear 
- break
+ exit
  ;;
  *) TIME r "----------------------------------"
     TIME r "|          Warning!!!            |"
