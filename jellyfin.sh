@@ -232,8 +232,8 @@ TIME r "<注>请使用root账户部署容器"
     sleep 10
     TIME g "                    安装完成，自动退出脚本                     "
     TIME g "         emby默认端口为8096，如有修改请访问修改的端口          "
-    TIME g "         外网面板地址: http://${address}:${JELLYFIN_PORT}  "
-    TIME g "         内网面板地址: http://${ip}:${JELLYFIN_PORT}       "
+    TIME g "         外网面板地址: http://${address}:${EMBY_PORT}  "
+    TIME g "         内网面板地址: http://${ip}:${EMBY_PORT}       "
     TIME g "   openwrt需要先执行命令 chmod 777 /dev/dri/* 才能读取到显卡   "
     TIME g "-----------------------------------------------------------------"
   exit 0
@@ -389,12 +389,13 @@ TIME r "<注>请使用root账户部署容器"
       log "列出所有宿主机上的容器"
       docker ps -a
     TIME g "-----------------------------------------------------------------"
-    TIME g "|              emby启动需要一点点时间，请耐心等待！             |"
+    TIME g "              emby启动需要一点点时间，请耐心等待！             "
     sleep 10
-    TIME g "|                    安装完成，自动退出脚本                     |"
-    TIME g "|       jellyfin默认端口为8096，如有修改请访问修改的端口        |"
-    TIME g "|         访问方式为宿主机ip:端口(例192.168.2.1:8096)           |"
-    TIME g "|   openwrt需要先执行命令 chmod 777 /dev/dri/* 才能读取到显卡   |"
+    TIME g "                    安装完成，自动退出脚本                     "
+    TIME g "         emby默认端口为8096，如有修改请访问修改的端口          "
+    TIME g "         外网面板地址: http://${address}:${JELLYFIN_PORT}  "
+    TIME g "         内网面板地址: http://${ip}:${JELLYFIN_PORT}       "
+    TIME g "   openwrt需要先执行命令 chmod 777 /dev/dri/* 才能读取到显卡   "
     TIME g "-----------------------------------------------------------------"
   exit 0
   ;;
