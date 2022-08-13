@@ -61,9 +61,6 @@ TIME() {
 	 }
       }
 }
-clear
-while [ "$flag" -eq 0 ]
-do
 #cat << EOF
 TIME w "----------------------------------------"
 TIME w "|****Please Enter Your Choice:[0-2]****|"
