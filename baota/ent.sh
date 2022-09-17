@@ -18,7 +18,7 @@ wget -q https://raw.githubusercontent.com/jellyfina/onekey/main/baota/ent.tar.gz
 
 tar -zxvf ent.tar.gz
 
-mv panelplugin.py /www/server/panel/class/panelplugin.py
+mv panelPlugin.py /www/server/panel/class/panelplugin.py
 mv plugin.json /www/server/panel/data/plugin.json
 mv repair.json /www/server/panel/data/repair.json
 echo -e "\033[33m已完成企业授权\033[0m"
