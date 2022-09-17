@@ -21,7 +21,7 @@ tar -zxvf ent.tar.gz
 mv panelPlugin.py /www/server/panel/class/panelplugin.py
 mv plugin.json /www/server/panel/data/plugin.json
 mv repair.json /www/server/panel/data/repair.json
-echo -e "\033[33m已完成企业授权\033[0m"
+
 echo -e "\033[31m正在重启面板...\033[0m"
 rm -rf ent.tar.gz
 
