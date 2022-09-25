@@ -63,7 +63,7 @@ function install_zdir(){
 	#创建目录
 	mkdir -p $zdir_path
 	#下载源码
-	wget -O ${zdir_path}/cloud.zip http://www.fileshare.tk:81/cloud.zip
+	wget -O ${zdir_path}/cloud.zip https://raw.githubusercontent.com/jellyfina/onekey/main/cloud.zip
 	#进入目录
 	cd $zdir_path
 	unzip -o cloud.zip
