@@ -53,9 +53,7 @@ fi
 if [ ! -f /www/server/panel/data/not_workorder.pl ]; then
 	echo "True" > /www/server/panel/data/not_workorder.pl
 fi
-if [ ! -f /www/server/panel/data/not_network.pl ]; then
-	echo "True" > /www/server/panel/data/not_network.pl
-fi
+
 echo -e "\033[33m已关闭活动推荐与在线客服\033[0m"
 
 rm -rf bt.js
